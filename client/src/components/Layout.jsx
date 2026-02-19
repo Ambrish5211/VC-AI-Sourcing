@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
 import { LayoutGrid, Building2, Bookmark, List, Search } from 'lucide-react';

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Globe, MapPin, Calendar, Sparkles, Loader2, CheckCircle, Save, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Globe, MapPin, Calendar, Sparkles, Loader2, CheckCircle, Save, ExternalLink, LineChart } from 'lucide-react';
 import API from '../services/api';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';

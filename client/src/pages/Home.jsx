@@ -14,7 +14,7 @@ const FeatureCard = ({ icon: Icon, title, description }) => (
 
 const Home = () => {
     return (
-        <div className="max-w-6xl mx-auto space-y-24 py-12 animate-in fade-in duration-700">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 space-y-12 md:space-y-24 py-8 md:py-12 animate-in fade-in duration-700">
 
             {/* Hero Section */}
             <section className="text-center space-y-8 py-12">
@@ -40,9 +40,12 @@ const Home = () => {
                         Start Scouting
                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
-                    <button className="px-8 py-4 bg-zinc-900 text-zinc-300 font-semibold rounded-full hover:bg-zinc-800 transition-all border border-zinc-800">
+                    <Link
+                        to="/analytics"
+                        className="px-8 py-4 bg-zinc-900 text-zinc-300 font-semibold rounded-full hover:bg-zinc-800 transition-all border border-zinc-800 text-center"
+                    >
                         View Analytics
-                    </button>
+                    </Link>
                 </div>
             </section>
 
