@@ -63,9 +63,10 @@ The goal was to build a **real product-feel MVP** with proper engineering practi
 ### High-Level Flow
 
 ```
-User → React UI → Backend API → Scraper → Gemini LLM → Cache → Response → UI
-![workflow](./assets/workflow.png)
+Cache → Response → UI
 ```
+
+![workflow](assets/workflow.png)
 
 1. User searches and discovers companies
 2. Opens company profile
