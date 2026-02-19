@@ -64,6 +64,7 @@ The goal was to build a **real product-feel MVP** with proper engineering practi
 
 ```
 User → React UI → Backend API → Scraper → Gemini LLM → Cache → Response → UI
+![workflow](./assets/workflow.png)
 ```
 
 1. User searches and discovers companies
@@ -192,28 +193,7 @@ Returns structured enrichment JSON.
 
 ---
 
-## 🧪 Postman Collection
 
-A Postman collection for testing APIs is available in:
-
-```
-/docs/postman_collection.json
-```
-
-Use it to test enrichment and company endpoints locally.
-
----
-
-## 🧭 Architecture Diagram
-
-Architecture and workflow diagram included:
-
-```
-/docs/architecture.png
-/docs/architecture.excalidraw
-```
-
----
 
 ## 🛠️ Local Setup
 
