@@ -130,5 +130,38 @@
         "description": "Banking built for startups.",
         "foundedYear": 2017,
         "logo": "https://company-logo-api.vercel.app/mercury.com"
+    },
+    {
+        "id": "13",
+        "name": "Vapi",
+        "domain": "vapi.ai",
+        "industry": "Voice AI",
+        "stage": "Series A",
+        "location": "San Francisco, CA",
+        "description": "The Voice AI API for developers.",
+        "foundedYear": 2023,
+        "logo": "https://company-logo-api.vercel.app/vapi.ai"
+    },
+    {
+        "id": "14",
+        "name": "Perplexity",
+        "domain": "perplexity.ai",
+        "industry": "AI Search",
+        "stage": "Series B",
+        "location": "San Francisco, CA",
+        "description": "The world's first conversational answer engine.",
+        "foundedYear": 2022,
+        "logo": "https://company-logo-api.vercel.app/perplexity.ai"
+    },
+    {
+        "id": "15",
+        "name": "Cursor",
+        "domain": "cursor.com",
+        "industry": "DevTools",
+        "stage": "Series A",
+        "location": "San Francisco, CA",
+        "description": "The AI-first code editor.",
+        "foundedYear": 2023,
+        "logo": "https://company-logo-api.vercel.app/cursor.com"
     }
 ]
