@@ -136,6 +136,7 @@ const NotificationBell = () => {
       <button
         onClick={handleClick}
         className="p-2 text-zinc-400 hover:text-white transition-colors relative"
+        aria-label="Notifications"
       >
         <Bell size={20} />
         {hasUnread && (
@@ -175,6 +176,7 @@ export default function App() {
               <button
                 className="md:hidden p-2 text-zinc-400 hover:text-white"
                 onClick={() => setIsSidebarOpen(true)}
+                aria-label="Toggle mobile menu"
               >
                 <Menu size={24} />
               </button>

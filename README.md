@@ -140,6 +140,8 @@ Purpose:
 
 Server cache remains source of truth.
 
+> **Note:** Server cache is in-memory and resets if the backend instance restarts or sleeps (Render free tier behavior). Since this is an MVP, this is acceptable; production systems would use Redis or persistent caching.
+
 ---
 
 ## 🔍 Search Implementation

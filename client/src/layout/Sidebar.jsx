@@ -56,14 +56,14 @@ const Sidebar = ({ isOpen, onClose }) => {
                     </div>
 
                     <nav className="space-y-1">
-                        <div className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2 px-3">
+                        <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2 px-3">
                             Menu
                         </div>
                         <NavItem to="/" icon={Home} label="Home" onClick={onClose} />
                         <NavItem to="/companies" icon={LayoutGrid} label="Companies" onClick={onClose} />
                         <NavItem to="/analytics" icon={LineChart} label="Analytics" onClick={onClose} />
 
-                        <div className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mt-8 mb-2 px-3">
+                        <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mt-8 mb-2 px-3">
                             Library
                         </div>
                         <NavItem to="/lists" icon={List} label="My Lists" onClick={onClose} />
