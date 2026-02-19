@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import enrichRoutes from "./routes/enrichRoutes.js";
 
 const app = express();
 
@@ -15,8 +14,11 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 
 // Routes Import
+import enrichRoutes from "./routes/enrichRoutes.js";
+import companiesRoutes from "./routes/companiesRoutes.js";
 
-app.use("/api/v1/enrich", enrichRoutes)
+app.use("/api/v1/enrich", enrichRoutes);
+app.use("/api/v1/companies", companiesRoutes);
 
 
 

@@ -1,0 +1,134 @@
+[
+    {
+        "id": "1",
+        "name": "Linear",
+        "domain": "linear.app",
+        "industry": "Productivity",
+        "stage": "Series B",
+        "location": "Remote",
+        "description": "The issue tracking tool you'll actually enjoy using.",
+        "foundedYear": 2019,
+        "logo": "https://company-logo-api.vercel.app/linear.app"
+    },
+    {
+        "id": "2",
+        "name": "Vercel",
+        "domain": "vercel.com",
+        "industry": "DevTools",
+        "stage": "Series D",
+        "location": "San Francisco, CA",
+        "description": "Develop. Preview. Ship. The frontend cloud for Next.js.",
+        "foundedYear": 2015,
+        "logo": "https://company-logo-api.vercel.app/vercel.com"
+    },
+    {
+        "id": "3",
+        "name": "Supabase",
+        "domain": "supabase.com",
+        "industry": "DevTools",
+        "stage": "Series B",
+        "location": "Singapore",
+        "description": "The Open Source Firebase Alternative.",
+        "foundedYear": 2020,
+        "logo": "https://company-logo-api.vercel.app/supabase.com"
+    },
+    {
+        "id": "4",
+        "name": "Retool",
+        "domain": "retool.com",
+        "industry": "Low Code",
+        "stage": "Series C",
+        "location": "San Francisco, CA",
+        "description": "Build internal tools purely in your browser.",
+        "foundedYear": 2017,
+        "logo": "https://company-logo-api.vercel.app/retool.com"
+    },
+    {
+        "id": "5",
+        "name": "Notion",
+        "domain": "notion.so",
+        "industry": "Productivity",
+        "stage": "Series C",
+        "location": "San Francisco, CA",
+        "description": "The all-in-one workspace for your notes, tasks, wikis, and databases.",
+        "foundedYear": 2013,
+        "logo": "https://company-logo-api.vercel.app/notion.so"
+    },
+    {
+        "id": "6",
+        "name": "Ramp",
+        "domain": "ramp.com",
+        "industry": "Fintech",
+        "stage": "Series D",
+        "location": "New York, NY",
+        "description": "The finance automation platform designed to overlook your spending.",
+        "foundedYear": 2019,
+        "logo": "https://company-logo-api.vercel.app/ramp.com"
+    },
+    {
+        "id": "7",
+        "name": "Figma",
+        "domain": "figma.com",
+        "industry": "Design",
+        "stage": "Late Stage",
+        "location": "San Francisco, CA",
+        "description": "The collaborative interface design tool.",
+        "foundedYear": 2012,
+        "logo": "https://company-logo-api.vercel.app/figma.com"
+    },
+    {
+        "id": "8",
+        "name": "Midjourney",
+        "domain": "midjourney.com",
+        "industry": "AI",
+        "stage": "Bootstrapped",
+        "location": "San Francisco, CA",
+        "description": "An independent research lab exploring new mediums of thought.",
+        "foundedYear": 2022,
+        "logo": "https://company-logo-api.vercel.app/midjourney.com"
+    },
+    {
+        "id": "9",
+        "name": "Hugging Face",
+        "domain": "huggingface.co",
+        "industry": "AI",
+        "stage": "Series D",
+        "location": "New York, NY",
+        "description": "The AI community building the future.",
+        "foundedYear": 2016,
+        "logo": "https://company-logo-api.vercel.app/huggingface.co"
+    },
+    {
+        "id": "10",
+        "name": "Resend",
+        "domain": "resend.com",
+        "industry": "DevTools",
+        "stage": "Seed",
+        "location": "Remote",
+        "description": "Email for developers. The best way to build, test, and send transactional emails.",
+        "foundedYear": 2023,
+        "logo": "https://company-logo-api.vercel.app/resend.com"
+    },
+    {
+        "id": "11",
+        "name": "PostHog",
+        "domain": "posthog.com",
+        "industry": "Analytics",
+        "stage": "Series B",
+        "location": "Remote",
+        "description": "The open source product OS.",
+        "foundedYear": 2020,
+        "logo": "https://company-logo-api.vercel.app/posthog.com"
+    },
+    {
+        "id": "12",
+        "name": "Mercury",
+        "domain": "mercury.com",
+        "industry": "Fintech",
+        "stage": "Series B",
+        "location": "San Francisco, CA",
+        "description": "Banking built for startups.",
+        "foundedYear": 2017,
+        "logo": "https://company-logo-api.vercel.app/mercury.com"
+    }
+]
