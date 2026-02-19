@@ -10,11 +10,8 @@ export const runEnrichment = async (url) => {
     // check cache first
     const cached = getCachedEnrichment(url);
     if (cached) {
-        console.log("Returning cached enrichment");
         return cached;
     }
-
-    console.log("Running fresh enrichment...");
 
     const websiteText = await scrapeWebsite(url);
     const extracted = await extractCompanyInfo(websiteText, url);

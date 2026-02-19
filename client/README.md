@@ -44,8 +44,10 @@ The user interface for the VC Intelligence Platform. A premium, dark-themed Reac
 
 -   **Market Discovery**: Filterable grid/list view of startups.
 -   **Live Enrichment**: "Enrich Profile" button triggers real-time AI analysis.
--   **Global Search**: Instant search across the entire dataset.
+-   **Global Search**: Instant search across the entire dataset with autocomplete.
 -   **User Library**: Save interesting companies and filter combinations (persisted in `localStorage`).
+-   **Mobile Responsive**: Fully adaptive layout with a touch-friendly drawer navigation on mobile devices.
+-   **Placeholder System**: Custom 404 and "In Progress" pages for future feature expansion.
 
 ## 📂 Project Structure
 

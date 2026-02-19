@@ -42,6 +42,7 @@ npm run dev
 2.  **Live AI Enrichment**: Scrapes company websites on-demand and uses Google Gemini to generate executive summaries and signals.
 3.  **Smart Filtering**: Organize companies by Industry and Stage.
 4.  **Personal Library**: Save companies and search configurations for later.
+5.  **Mobile Ready**: Fully responsive design with mobile-optimized navigation.
 
 ## 📝 License
 

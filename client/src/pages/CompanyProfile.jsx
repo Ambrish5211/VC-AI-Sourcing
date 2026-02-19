@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Globe, MapPin, Calendar, Sparkles, Loader2, CheckCircle, Save, ExternalLink, LineChart } from 'lucide-react';
+import { ArrowLeft, Globe, MapPin, Calendar, Sparkles, Loader2, CheckCircle, Save, ExternalLink, LineChart, Download } from 'lucide-react';
 import API from '../services/api';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
@@ -74,6 +74,23 @@ const CompanyProfile = () => {
         }
         localStorage.setItem('savedCompanies', JSON.stringify(newSaved));
         setIsSaved(!isSaved);
+    };
+
+    const handleExport = () => {
+        if (!enrichedData) return;
+
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({
+            company: company,
+            enrichment: enrichedData,
+            exportedAt: new Date().toISOString()
+        }, null, 2));
+
+        const downloadAnchorNode = document.createElement('a');
+        downloadAnchorNode.setAttribute("href", dataStr);
+        downloadAnchorNode.setAttribute("download", `${company.name.replace(/\s+/g, '_')}_intelligence.json`);
+        document.body.appendChild(downloadAnchorNode); // required for firefox
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
     };
 
     if (loading) {
@@ -164,15 +181,25 @@ const CompanyProfile = () => {
                             ) : enrichedData ? (
                                 <>
                                     <CheckCircle size={18} />
-                                    Enriched
+                                    Insight Generated
                                 </>
                             ) : (
                                 <>
-                                    <Sparkles size={18} className="text-purple-600" />
+                                    <Sparkles size={18} />
                                     Enrich Profile
                                 </>
                             )}
                         </button>
+
+                        {enrichedData && (
+                            <button
+                                onClick={handleExport}
+                                className="flex items-center justify-center gap-2 px-4 py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg font-medium transition-colors border border-zinc-700"
+                            >
+                                <Download size={18} />
+                                Export JSON
+                            </button>
+                        )}
                         <button
                             onClick={handleSave}
                             className={clsx(
