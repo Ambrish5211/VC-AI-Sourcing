@@ -12,13 +12,13 @@ Built as part of the VC Intelligence Interface + Live Enrichment intern assignme
 ## 🚀 Live Demo
 
 **Frontend (Deployed):**
-<>
+<https://vc-ai-sourcing.vercel.app/>
 
 **Backend API:**
-<YOUR_BACKEND_URL>
+<https://vc-ai-sourcing.onrender.com>
 
 **GitHub Repo:**
-<YOUR_REPO_URL>
+<https://github.com/Ambrish5211/VC-AI-Sourcing>
 
 ---
 
@@ -69,8 +69,8 @@ User → React UI → Backend API → Scraper → Gemini LLM → Cache → Respo
 1. User searches and discovers companies
 2. Opens company profile
 3. Clicks "Enrich"
-4. Backend checks cache
-5. If not cached → scrape website + send to Gemini
+4. Check localStorage for cached result
+5. If not cached → call backend API -> backend checks in-memory cache -> if not cached → scrape   website + send to Gemini -> return structured insights -> cache in-memory and localStorage
 6. Structured insights returned
 7. Cached server-side and displayed in UI
 

@@ -17,6 +17,8 @@ export default function Companies() {
     // Filters
     const [industry, setIndustry] = useState("All");
     const [stage, setStage] = useState("All");
+    const [sort, setSort] = useState('name'); // NEW
+    const [order, setOrder] = useState('asc'); // NEW
     const [viewMode, setViewMode] = useState("grid"); // 'grid' or 'list'
 
     const industries = ['All', 'AI', 'DevTools', 'Fintech', 'Productivity', 'Design', 'Data'];
@@ -30,10 +32,22 @@ export default function Companies() {
         }
     }, [location.state]);
 
+    // ... (rest of query params)
+    const query = new URLSearchParams(location.search);
+    const searchQuery = query.get('q') || '';
+
     const fetchCompanies = async () => {
         setLoading(true);
         try {
-            const params = { page, limit: 12 };
+            const params = {
+                page,
+                limit: 9, // Changed from 12 to 9
+                search: searchQuery, // Added search query
+                industry,
+                stage,
+                sort, // Added sort
+                order // Added order
+            };
             if (industry !== 'All') params.industry = industry;
             if (stage !== 'All') params.stage = stage;
 
@@ -42,9 +56,10 @@ export default function Companies() {
             setCompanies(res.data.data || []);
             setTotalPages(res.data.meta?.totalPages || 1);
         } catch (err) {
-            console.error(err);
+            console.error("Failed to fetch companies", err);
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
     };
 
     const handleSaveSearch = () => {
@@ -63,7 +78,7 @@ export default function Companies() {
     useEffect(() => {
         setPage(1);
         fetchCompanies();
-    }, [industry, stage]);
+    }, [industry, stage, searchQuery, sort, order]); // Added searchQuery, sort, order
 
     // Pagination change
     useEffect(() => {
@@ -82,6 +97,7 @@ export default function Companies() {
                     <p className="text-zinc-400">Discover and track high-growth startups.</p>
                 </div>
 
+                {/* Moved view mode buttons here */}
                 <div className="flex bg-zinc-900 p-1 rounded-lg border border-zinc-800">
                     <button
                         onClick={() => setViewMode('grid')}
@@ -122,6 +138,22 @@ export default function Companies() {
                     >
                         {stages.map(s => <option key={s} value={s}>{s} Stage</option>)}
                     </select>
+
+                    {/* New Sort Dropdown */}
+                    <select
+                        value={`${sort}-${order}`}
+                        onChange={(e) => {
+                            const [s, o] = e.target.value.split('-');
+                            setSort(s);
+                            setOrder(o);
+                        }}
+                        className="bg-zinc-900 border border-zinc-800 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 min-w-[140px]"
+                    >
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="foundedYear-desc">Newest First</option>
+                        <option value="foundedYear-asc">Oldest First</option>
+                    </select>
                 </div>
 
                 <div className="flex items-center gap-4">
@@ -133,9 +165,7 @@ export default function Companies() {
                         <Save size={16} />
                         Save Search
                     </button>
-                    <p className="text-sm text-zinc-500 hidden md:block border-l border-zinc-800 pl-4">
-                        Showing <span className="text-white font-medium">{companies.length}</span> results
-                    </p>
+                    {/* Removed "Showing X results" text */}
                 </div>
             </div>
 
