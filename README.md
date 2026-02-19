@@ -1,49 +1,302 @@
-# VC Intelligence Sourcing Platform
+# VC Scout – Intelligence Interface + Live Enrichment
 
-A premium AI-powered interface for Venture Capitalists to discover, track, and analyze high-growth startups. This monorepo contains both the React frontend and the Node.js/Express backend.
+A functional VC discovery interface that enables venture teams to discover companies, view structured profiles, and run live AI-powered enrichment on public company websites.
 
-![Project Status](https://img.shields.io/badge/Status-Complete-green)
+This project implements a clean discovery workflow:
+**discover → open profile → enrich → analyze → save insights**
+
+Built as part of the VC Intelligence Interface + Live Enrichment intern assignment.
+
+---
+
+## 🚀 Live Demo
+
+**Frontend (Deployed):**
+<>
+
+**Backend API:**
+<YOUR_BACKEND_URL>
+
+**GitHub Repo:**
+<YOUR_REPO_URL>
+
+---
+
+## 🧠 Overview
+
+VC firms spend significant time sourcing and triaging startups from fragmented tools.
+This application converts that workflow into a unified intelligence interface with live enrichment.
+
+The system allows users to:
+
+* Search and filter companies quickly
+* Open detailed company profiles
+* Run AI-based enrichment on demand
+* Cache enrichment results to reduce cost and latency
+* Save notes and lists locally
+
+The goal was to build a **real product-feel MVP** with proper engineering practices rather than a quick prototype.
+
+---
 
 ## 🏗️ Architecture
 
-The project is split into two main parts:
+### Tech Stack
 
--   **[Client](./client/README.md)**: A modern React application with a premium dark UI.
--   **[Server](./server/README.md)**: A Node.js API that handles data and AI enrichment.
+**Frontend**
 
-## 🚀 Quick Start
+* React (Vite)
+* Tailwind CSS
+* Axios
+* Fuse.js (fuzzy search)
+* LocalStorage (notes, lists, enrichment cache)
 
-To run the full application, you will need to start both the client and the server in separate terminals.
+**Backend**
 
-### 1. Start the Backend
-The server provides the API and the AI enrichment capabilities.
-```bash
+* Node.js + Express
+* Gemini API (LLM extraction)
+* Axios + Cheerio (web scraping)
+* In-memory cache with TTL
+
+---
+
+### High-Level Flow
+
+```
+User → React UI → Backend API → Scraper → Gemini LLM → Cache → Response → UI
+```
+
+1. User searches and discovers companies
+2. Opens company profile
+3. Clicks "Enrich"
+4. Backend checks cache
+5. If not cached → scrape website + send to Gemini
+6. Structured insights returned
+7. Cached server-side and displayed in UI
+
+---
+
+## ✨ Features Implemented
+
+### Companies Discovery
+
+* Backend-driven search, filtering and pagination
+* Fuzzy search using Fuse.js for fast discovery
+* Sortable and paginated company table
+* Clean responsive interface
+
+### Company Profile
+
+* Overview and metadata
+* Notes (stored in localStorage)
+* Save to list functionality
+* Enrichment trigger button
+
+### 🔥 Live AI Enrichment
+
+On-demand enrichment from public company websites:
+
+Extracted fields:
+
+* Summary (1–2 lines)
+* What they do (bullet points)
+* Keywords
+* Derived signals (hiring, blog, changelog etc.)
+* Source URLs
+* Timestamp
+
+All enrichment executed server-side to keep API keys secure.
+
+---
+
+## ⚡ Caching Strategy (Engineering Focus)
+
+### 1. Server-Side Cache (Primary)
+
+Implemented using in-memory Map with TTL.
+
+Purpose:
+
+* Prevent repeated Gemini API calls
+* Reduce latency
+* Control cost
+
+Flow:
+
+```
+Request → check cache → if hit return → else enrich → store → return
+```
+
+### 2. Client-Side Cache (UX Optimization)
+
+Stored in localStorage per company website.
+
+Purpose:
+
+* Instant reload after refresh
+* Avoid unnecessary repeated calls
+* Improve UX responsiveness
+
+Server cache remains source of truth.
+
+---
+
+## 🔍 Search Implementation
+
+Search is implemented using **Fuse.js** for fast fuzzy matching.
+
+Advantages:
+
+* Handles typos and partial matches
+* Lightweight and fast
+* Improves discovery experience
+* Works seamlessly with backend pagination
+
+---
+
+## 📦 API Endpoints
+
+### GET /api/companies
+
+Returns paginated and filtered companies.
+
+Query params:
+
+```
+search
+sector
+stage
+page
+limit
+sort
+order
+```
+
+### GET /api/companies/:id
+
+Returns single company profile.
+
+### POST /api/enrich
+
+Runs enrichment for company website.
+
+Body:
+
+```
+{
+  "websiteUrl": "https://company.com"
+}
+```
+
+Returns structured enrichment JSON.
+
+---
+
+## 🧪 Postman Collection
+
+A Postman collection for testing APIs is available in:
+
+```
+/docs/postman_collection.json
+```
+
+Use it to test enrichment and company endpoints locally.
+
+---
+
+## 🧭 Architecture Diagram
+
+Architecture and workflow diagram included:
+
+```
+/docs/architecture.png
+/docs/architecture.excalidraw
+```
+
+---
+
+## 🛠️ Local Setup
+
+### 1. Clone repository
+
+```
+git clone <repo-url>
+cd vc-scout
+```
+
+---
+
+### 2. Backend Setup
+
+```
 cd server
 npm install
-# Create .env file with GEMINI_API_KEY
-npm run dev
-# Running on http://localhost:4000
 ```
-> See [Server Documentation](./server/README.md) for detailed setup.
 
-### 2. Start the Frontend
-The client is the user interface you interact with.
-```bash
+Create `.env`
+
+```
+GEMINI_API_KEY=your_key
+PORT=5000
+CORS_ORIGIN=http://localhost:5173
+```
+
+Run backend:
+
+```
+npm run dev
+```
+
+---
+
+### 3. Frontend Setup
+
+```
 cd client
 npm install
-npm run dev
-# Open http://localhost:5173
 ```
-> See [Client Documentation](./client/README.md) for detailed setup.
 
-## ✨ Core Features
+Create `.env`
 
-1.  **Global Search**: Unified search bar to find companies instantly.
-2.  **Live AI Enrichment**: Scrapes company websites on-demand and uses Google Gemini to generate executive summaries and signals.
-3.  **Smart Filtering**: Organize companies by Industry and Stage.
-4.  **Personal Library**: Save companies and search configurations for later.
-5.  **Mobile Ready**: Fully responsive design with mobile-optimized navigation.
+```
+VITE_API_URL=http://localhost:PORT/api/v1
+```
 
-## 📝 License
+Run frontend:
 
-This project is created for the Xartup Fellowship.
+```
+npm run dev
+```
+
+---
+
+## 🚀 Deployment
+
+Frontend deployed on Vercel.
+Backend deployed on Render/Railway.
+
+All API keys are stored securely in environment variables and never exposed to the browser.
+
+---
+
+## ⚖️ Tradeoffs & Future Improvements
+
+Given the time constraint, the focus was on a clean, working MVP.
+
+Possible improvements:
+
+* Replace in-memory cache with Redis
+* Add background enrichment queue
+* Persistent database (MongoDB/Postgres)
+* Vector search for similar companies
+* Multi-source enrichment (GitHub, news, jobs)
+* Auth + multi-user support
+* Slack/CRM integrations
+
+---
+
+## 👨‍💻 Author
+
+**Ambrish Kumar**
+
+Happy to walk through architecture or design decisions if helpful.

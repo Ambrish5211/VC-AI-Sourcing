@@ -22,8 +22,14 @@ export const runEnrichment = async (url) => {
         enrichedAt: new Date().toISOString(),
     };
 
-    //  store in cache
-    setCachedEnrichment(url, result);
+    // Only cache if successful
+    const isFailure = result.summary === "AI Extraction Failed" ||
+        result.summary.includes("Could not scrape") ||
+        result.signals?.includes("Scraping failed");
+
+    if (!isFailure) {
+        setCachedEnrichment(url, result);
+    }
 
     return result;
 };

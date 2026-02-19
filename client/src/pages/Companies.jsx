@@ -3,6 +3,7 @@ import API from "../services/api";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Loader2, Filter, MapPin, TrendingUp, LayoutGrid, List as ListIcon, Save } from "lucide-react";
 import clsx from "clsx";
+import { getStageColor } from "../utils/styles";
 
 export default function Companies() {
     const navigate = useNavigate();
@@ -171,10 +172,8 @@ export default function Companies() {
                                             />
                                         </div>
                                         <span className={clsx(
-                                            "text-xs font-semibold px-2.5 py-1 rounded-full border",
-                                            c.stage === 'Seed' ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" :
-                                                c.stage.includes('Series') ? "bg-blue-500/10 text-blue-400 border-blue-500/20" :
-                                                    "bg-zinc-800 text-zinc-400 border-zinc-700"
+                                            "text-xs font-semibold px-2.5 py-1 rounded-full border whitespace-nowrap",
+                                            getStageColor(c.stage)
                                         )}>
                                             {c.stage}
                                         </span>

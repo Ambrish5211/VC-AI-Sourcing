@@ -4,6 +4,7 @@ import { ArrowLeft, Globe, MapPin, Calendar, Sparkles, Loader2, CheckCircle, Sav
 import API from '../services/api';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
+import { getStageColor } from '../utils/styles';
 
 const CompanyProfile = () => {
     const { id } = useParams();
@@ -124,13 +125,12 @@ const CompanyProfile = () => {
                             onError={(e) => { e.target.src = `https://ui-avatars.com/api/?name=${company.name}&background=random` }}
                         />
                         <div>
-                            <h1 className="text-3xl font-bold mb-2 flex items-center gap-3 text-white">
+                            <h1 className="text-3xl font-bold mb-2 flex flex-wrap items-center gap-3 text-white">
                                 {company.name}
                                 <div className="flex gap-2">
                                     <span className={clsx(
-                                        "text-xs px-2.5 py-0.5 rounded-full border",
-                                        company.stage === 'Seed' ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" :
-                                            "bg-zinc-800 text-zinc-400 border-zinc-700"
+                                        "text-xs px-2.5 py-0.5 rounded-full border whitespace-nowrap",
+                                        getStageColor(company.stage)
                                     )}>
                                         {company.stage}
                                     </span>
@@ -169,7 +169,9 @@ const CompanyProfile = () => {
                                 enriching
                                     ? "bg-zinc-800 text-zinc-500 cursor-not-allowed"
                                     : enrichedData
-                                        ? "bg-green-500/10 text-green-400 border border-green-500/20 shadow-green-900/10"
+                                        ? (enrichedData.summary === "AI Extraction Failed" || enrichedData.summary?.includes("Could not scrape"))
+                                            ? "bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20"
+                                            : "bg-green-500/10 text-green-400 border border-green-500/20 shadow-green-900/10"
                                         : "bg-white text-black hover:bg-zinc-200 shadow-purple-500/10 hover:shadow-purple-500/20"
                             )}
                         >
@@ -179,10 +181,17 @@ const CompanyProfile = () => {
                                     Analyzing...
                                 </>
                             ) : enrichedData ? (
-                                <>
-                                    <CheckCircle size={18} />
-                                    Insight Generated
-                                </>
+                                (enrichedData.summary === "AI Extraction Failed" || enrichedData.summary?.includes("Could not scrape")) ? (
+                                    <>
+                                        <Sparkles size={18} />
+                                        Retry Analysis
+                                    </>
+                                ) : (
+                                    <>
+                                        <CheckCircle size={18} />
+                                        Insight Generated
+                                    </>
+                                )
                             ) : (
                                 <>
                                     <Sparkles size={18} />
@@ -237,28 +246,35 @@ const CompanyProfile = () => {
                                 <div className="h-4 bg-zinc-800 rounded w-5/6"></div>
                             </div>
                         ) : enrichedData ? (
-                            <div className="space-y-6">
-                                <div>
-                                    <h4 className="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-2">Executive Summary</h4>
-                                    <p className="text-zinc-300 leading-relaxed text-lg">
-                                        {enrichedData.summary}
-                                    </p>
+                            (enrichedData.summary === "AI Extraction Failed" || enrichedData.summary?.includes("Could not scrape")) ? (
+                                <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-200">
+                                    <p className="font-medium mb-1">Analysis Failed</p>
+                                    <p className="text-sm opacity-80">We couldn't extract data from this website. It might be blocked or inaccessible.</p>
                                 </div>
-
-                                {enrichedData.whatTheyDo && (
+                            ) : (
+                                <div className="space-y-6">
                                     <div>
-                                        <h4 className="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-2">Key Activities</h4>
-                                        <div className="space-y-2">
-                                            {enrichedData.whatTheyDo.map((item, i) => (
-                                                <div key={i} className="flex items-start gap-3 text-zinc-300">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 shrink-0" />
-                                                    {item}
-                                                </div>
-                                            ))}
-                                        </div>
+                                        <h4 className="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-2">Executive Summary</h4>
+                                        <p className="text-zinc-300 leading-relaxed text-lg">
+                                            {enrichedData.summary}
+                                        </p>
                                     </div>
-                                )}
-                            </div>
+
+                                    {enrichedData.whatTheyDo && (
+                                        <div>
+                                            <h4 className="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-2">Key Activities</h4>
+                                            <div className="space-y-2">
+                                                {enrichedData.whatTheyDo.map((item, i) => (
+                                                    <div key={i} className="flex items-start gap-3 text-zinc-300">
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 shrink-0" />
+                                                        {item}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            )
                         ) : (
                             <div className="text-center py-12 text-zinc-500 bg-zinc-950/50 rounded-lg border border-dashed border-zinc-800">
                                 <Sparkles className="mx-auto mb-3 opacity-20" size={48} />
