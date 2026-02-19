@@ -1,87 +1,48 @@
 # VC Intelligence Sourcing Platform
 
-A premium AI-powered interface for Venture Capitalists to discover, track, and analyze high-growth startups.
+A premium AI-powered interface for Venture Capitalists to discover, track, and analyze high-growth startups. This monorepo contains both the React frontend and the Node.js/Express backend.
 
-## 🚀 Features
+![Project Status](https://img.shields.io/badge/Status-Complete-green)
 
--   **Premium UI/UX**: Modern, dark-themed interface built with React, TailwindCSS, and Framer Motion.
--   **Live AI Enrichment**: Integration with **Google Gemini** to scrape and analyze company websites in real-time.
--   **Global Search**: Unified search bar to quickly find companies across the database.
--   **Smart Filtering**: Filter companies by Industry and Stage with a responsive grid/list view.
--   **User Library**:
-    -   **Lists**: Bookmark interesting companies.
-    -   **Saved Searches**: Save your favorite filter combinations for quick access.
-    -   *Persisted locally via LocalStorage.*
+## 🏗️ Architecture
 
-## 🛠️ Tech Stack
+The project is split into two main parts:
 
-### Client
--   **Framework**: React (Vite)
--   **Styling**: TailwindCSS v4, Lucide React (Icons), clsx/tailwind-merge
--   **Animation**: Framer Motion
--   **Routing**: React Router v7
+-   **[Client](./client/README.md)**: A modern React application with a premium dark UI.
+-   **[Server](./server/README.md)**: A Node.js API that handles data and AI enrichment.
 
-### Server
--   **Runtime**: Node.js + Express
--   **AI**: Google Gemini SDK (`@google/generative-ai`)
--   **Scraping**: Cheerio + Axios
--   **Data**: Mock JSON database (simulating a real DB)
+## 🚀 Quick Start
 
-## 🏃‍♂️ Getting Started
+To run the full application, you will need to start both the client and the server in separate terminals.
 
-### Prerequisites
--   Node.js (v18+)
--   NPM or Yarn
--   Google Gemini API Key
-
-### Installation
-
-1.  **Clone the repository**
-    ```bash
-    git clone <repository-url>
-    cd xartup-fellowship
-    ```
-
-2.  **Setup Server**
-    ```bash
-    cd server
-    npm install
-    cp .env.example .env
-    # Add your GEMINI_API_KEY to .env
-    npm run dev
-    # Server runs on http://localhost:4000
-    ```
-
-3.  **Setup Client**
-    ```bash
-    cd ../client
-    npm install
-    npm run dev
-    # Client runs on http://localhost:5173
-    ```
-
-## 📂 Project Structure
-
+### 1. Start the Backend
+The server provides the API and the AI enrichment capabilities.
+```bash
+cd server
+npm install
+# Create .env file with GEMINI_API_KEY
+npm run dev
+# Running on http://localhost:4000
 ```
-├── client/                 # React Frontend
-│   ├── src/
-│   │   ├── components/     # Reusable UI components
-│   │   ├── layout/         # Shell, Sidebar, Header
-│   │   ├── pages/          # Route pages (Home, Companies, Profile...)
-│   │   └── services/       # API integration (Axios)
-│   └── ...
-│
-├── server/                 # Express Backend
-│   ├── src/
-│   │   ├── controllers/    # Request logic (Enrichment, Companies)
-│   │   ├── data/           # Mock database
-│   │   └── utils/          # AI and Scraping utilities
-│   └── ...
-└── ...
+> See [Server Documentation](./server/README.md) for detailed setup.
+
+### 2. Start the Frontend
+The client is the user interface you interact with.
+```bash
+cd client
+npm install
+npm run dev
+# Open http://localhost:5173
 ```
+> See [Client Documentation](./client/README.md) for detailed setup.
 
-## ✨ usage
+## ✨ Core Features
 
-1.  **Discover**: Go to the **Market Intelligence** page to browse startups.
-2.  **Analyze**: Click on a company to view its profile. Click **"Enrich Profile"** to trigger the live AI agent.
-3.  **Organize**: Use "Save to List" to track companies or "Save Search" to bookmark your filters.
+1.  **Global Search**: Unified search bar to find companies instantly.
+2.  **Live AI Enrichment**: Scrapes company websites on-demand and uses Google Gemini to generate executive summaries and signals.
+3.  **Smart Filtering**: Organize companies by Industry and Stage.
+4.  **Personal Library**: Save companies and search configurations for later.
+
+## 📝 License
+
+This project is created for the Xartup Fellowship.

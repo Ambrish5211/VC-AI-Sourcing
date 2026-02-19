@@ -38,8 +38,8 @@ export default function Companies() {
 
             const res = await API.get("/companies", { params });
 
-            setCompanies(res.data.data);
-            setTotalPages(res.data.totalPages);
+            setCompanies(res.data.data || []);
+            setTotalPages(res.data.meta?.totalPages || 1);
         } catch (err) {
             console.error(err);
         }

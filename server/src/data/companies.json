@@ -8,7 +8,7 @@
         "location": "Remote",
         "description": "The issue tracking tool you'll actually enjoy using.",
         "foundedYear": 2019,
-        "logo": "https://company-logo-api.vercel.app/linear.app"
+        "logo": "https://www.google.com/s2/favicons?domain=linear.app&sz=128"
     },
     {
         "id": "2",
@@ -19,7 +19,7 @@
         "location": "San Francisco, CA",
         "description": "Develop. Preview. Ship. The frontend cloud for Next.js.",
         "foundedYear": 2015,
-        "logo": "https://company-logo-api.vercel.app/vercel.com"
+        "logo": "https://www.google.com/s2/favicons?domain=vercel.com&sz=128"
     },
     {
         "id": "3",
@@ -30,7 +30,7 @@
         "location": "Singapore",
         "description": "The Open Source Firebase Alternative.",
         "foundedYear": 2020,
-        "logo": "https://company-logo-api.vercel.app/supabase.com"
+        "logo": "https://www.google.com/s2/favicons?domain=supabase.com&sz=128"
     },
     {
         "id": "4",
@@ -41,7 +41,7 @@
         "location": "San Francisco, CA",
         "description": "Build internal tools purely in your browser.",
         "foundedYear": 2017,
-        "logo": "https://company-logo-api.vercel.app/retool.com"
+        "logo": "https://www.google.com/s2/favicons?domain=retool.com&sz=128"
     },
     {
         "id": "5",
@@ -52,7 +52,7 @@
         "location": "San Francisco, CA",
         "description": "The all-in-one workspace for your notes, tasks, wikis, and databases.",
         "foundedYear": 2013,
-        "logo": "https://company-logo-api.vercel.app/notion.so"
+        "logo": "https://www.google.com/s2/favicons?domain=notion.so&sz=128"
     },
     {
         "id": "6",
@@ -63,7 +63,7 @@
         "location": "New York, NY",
         "description": "The finance automation platform designed to overlook your spending.",
         "foundedYear": 2019,
-        "logo": "https://company-logo-api.vercel.app/ramp.com"
+        "logo": "https://www.google.com/s2/favicons?domain=ramp.com&sz=128"
     },
     {
         "id": "7",
@@ -74,7 +74,7 @@
         "location": "San Francisco, CA",
         "description": "The collaborative interface design tool.",
         "foundedYear": 2012,
-        "logo": "https://company-logo-api.vercel.app/figma.com"
+        "logo": "https://www.google.com/s2/favicons?domain=figma.com&sz=128"
     },
     {
         "id": "8",
@@ -85,7 +85,7 @@
         "location": "San Francisco, CA",
         "description": "An independent research lab exploring new mediums of thought.",
         "foundedYear": 2022,
-        "logo": "https://company-logo-api.vercel.app/midjourney.com"
+        "logo": "https://www.google.com/s2/favicons?domain=midjourney.com&sz=128"
     },
     {
         "id": "9",
@@ -96,7 +96,7 @@
         "location": "New York, NY",
         "description": "The AI community building the future.",
         "foundedYear": 2016,
-        "logo": "https://company-logo-api.vercel.app/huggingface.co"
+        "logo": "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128"
     },
     {
         "id": "10",
@@ -107,7 +107,7 @@
         "location": "Remote",
         "description": "Email for developers. The best way to build, test, and send transactional emails.",
         "foundedYear": 2023,
-        "logo": "https://company-logo-api.vercel.app/resend.com"
+        "logo": "https://www.google.com/s2/favicons?domain=resend.com&sz=128"
     },
     {
         "id": "11",
@@ -118,7 +118,7 @@
         "location": "Remote",
         "description": "The open source product OS.",
         "foundedYear": 2020,
-        "logo": "https://company-logo-api.vercel.app/posthog.com"
+        "logo": "https://www.google.com/s2/favicons?domain=posthog.com&sz=128"
     },
     {
         "id": "12",
@@ -129,7 +129,7 @@
         "location": "San Francisco, CA",
         "description": "Banking built for startups.",
         "foundedYear": 2017,
-        "logo": "https://company-logo-api.vercel.app/mercury.com"
+        "logo": "https://www.google.com/s2/favicons?domain=mercury.com&sz=128"
     },
     {
         "id": "13",
@@ -140,7 +140,7 @@
         "location": "San Francisco, CA",
         "description": "The Voice AI API for developers.",
         "foundedYear": 2023,
-        "logo": "https://company-logo-api.vercel.app/vapi.ai"
+        "logo": "https://www.google.com/s2/favicons?domain=vapi.ai&sz=128"
     },
     {
         "id": "14",
@@ -151,7 +151,7 @@
         "location": "San Francisco, CA",
         "description": "The world's first conversational answer engine.",
         "foundedYear": 2022,
-        "logo": "https://company-logo-api.vercel.app/perplexity.ai"
+        "logo": "https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128"
     },
     {
         "id": "15",
@@ -162,6 +162,6 @@
         "location": "San Francisco, CA",
         "description": "The AI-first code editor.",
         "foundedYear": 2023,
-        "logo": "https://company-logo-api.vercel.app/cursor.com"
+        "logo": "https://www.google.com/s2/favicons?domain=cursor.com&sz=128"
     }
 ]

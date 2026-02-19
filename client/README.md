@@ -1,16 +1,59 @@
-# React + Vite
+# VC Intelligence - Frontend Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The user interface for the VC Intelligence Platform. A premium, dark-themed React application designed for discovering and analyzing high-growth startups.
 
-Currently, two official plugins are available:
+## 🛠️ Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   **Framework**: React (Vite)
+-   **Styling**: TailwindCSS v4
+-   **Icons**: Lucide React
+-   **Animations**: Framer Motion
+-   **Routing**: React Router v7
+-   **HTTP Client**: Axios
 
-## React Compiler
+## 🚀 Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
+-   Node.js (v18 or higher)
 
-## Expanding the ESLint configuration
+### Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1.  Navigate to the client directory:
+    ```bash
+    cd client
+    ```
+
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3.  Configure Environment:
+    Create a `.env` file (optional, defaults are set in code):
+    ```env
+    VITE_API_BASE_URL=http://localhost:4000/api/v1
+    ```
+
+4.  Start the Development Server:
+    ```bash
+    npm run dev
+    ```
+    The app will open at `http://localhost:5173`.
+
+## ✨ Key Features
+
+-   **Market Discovery**: Filterable grid/list view of startups.
+-   **Live Enrichment**: "Enrich Profile" button triggers real-time AI analysis.
+-   **Global Search**: Instant search across the entire dataset.
+-   **User Library**: Save interesting companies and filter combinations (persisted in `localStorage`).
+
+## 📂 Project Structure
+
+```
+src/
+├── components/     # Reusable UI components (buttons, cards, etc.)
+├── layout/         # App shell (Sidebar, Global Header)
+├── pages/          # Page components (Home, Companies, Profile, Lists)
+├── services/       # API configuration and service calls
+└── index.css       # Tailwind directives and global styles
+```
