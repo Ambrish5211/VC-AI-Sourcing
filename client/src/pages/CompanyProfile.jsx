@@ -13,13 +13,23 @@ const CompanyProfile = () => {
     const [enriching, setEnriching] = useState(false);
     const [enrichedData, setEnrichedData] = useState(null);
     const [isSaved, setIsSaved] = useState(false);
+    const [longLoading, setLongLoading] = useState(false);
 
     // Load company data
     useEffect(() => {
         const loadCompany = async () => {
             try {
                 setLoading(true);
+                setLongLoading(false);
+
+                // Set a timeout to show "long loading" message after 5 seconds
+                const timer = setTimeout(() => {
+                    setLongLoading(true);
+                }, 5000);
+
                 const res = await API.get(`/companies/${id}`);
+
+                clearTimeout(timer); // Clear timeout if data returns fast
                 setCompany(res.data);
 
                 // Check localStorage for cached enrichment data
@@ -35,6 +45,7 @@ const CompanyProfile = () => {
                 console.error("Failed to load company", error);
             } finally {
                 setLoading(false);
+                setLongLoading(false);
             }
         };
         loadCompany();
@@ -96,9 +107,22 @@ const CompanyProfile = () => {
 
     if (loading) {
         return (
-            <div className="h-full flex items-center justify-center text-zinc-500 gap-2">
-                <Loader2 className="animate-spin" size={20} />
-                Loading profile...
+            <div className="min-h-[60vh] flex flex-col items-center justify-center text-zinc-500">
+                <Loader2 className="animate-spin mb-4" size={32} />
+                <p>Loading company profile...</p>
+                {longLoading && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mt-4 p-4 bg-zinc-900 border border-zinc-800 rounded-lg max-w-sm text-center"
+                    >
+                        <p className="text-yellow-500 font-medium mb-1">Server Waking Up 😴</p>
+                        <p className="text-xs text-zinc-400">
+                            The backend runs on a free instance and sleeps when inactive.
+                            Please wait 30-50 seconds for it to restart.
+                        </p>
+                    </motion.div>
+                )}
             </div>
         );
     }

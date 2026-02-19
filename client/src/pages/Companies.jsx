@@ -3,6 +3,7 @@ import API from "../services/api";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Loader2, Filter, MapPin, TrendingUp, LayoutGrid, List as ListIcon, Save } from "lucide-react";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 import { getStageColor } from "../utils/styles";
 
 export default function Companies() {
@@ -13,6 +14,7 @@ export default function Companies() {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [loading, setLoading] = useState(false);
+    const [longLoading, setLongLoading] = useState(false);
 
     // Filters
     const [industry, setIndustry] = useState("All");
@@ -38,6 +40,13 @@ export default function Companies() {
 
     const fetchCompanies = async () => {
         setLoading(true);
+        setLongLoading(false);
+
+        // Set a timeout to show "long loading" message after 5 seconds
+        const timer = setTimeout(() => {
+            setLongLoading(true);
+        }, 5000);
+
         try {
             const params = {
                 page,
@@ -55,10 +64,12 @@ export default function Companies() {
 
             setCompanies(res.data.data || []);
             setTotalPages(res.data.meta?.totalPages || 1);
+            clearTimeout(timer);
         } catch (err) {
             console.error("Failed to fetch companies", err);
         } finally {
             setLoading(false);
+            setLongLoading(false);
         }
     };
 
