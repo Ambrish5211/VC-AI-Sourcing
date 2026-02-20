@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Globe, MapPin, Calendar, Sparkles, Loader2, CheckCircle, Save, ExternalLink, LineChart, Download } from 'lucide-react';
 import API from '../services/api';
 import clsx from 'clsx';
@@ -8,7 +8,9 @@ import { getStageColor } from '../utils/styles';
 
 const CompanyProfile = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [company, setCompany] = useState(null);
+    // ... existing states ...
     const [loading, setLoading] = useState(true);
     const [enriching, setEnriching] = useState(false);
     const [enrichedData, setEnrichedData] = useState(null);
@@ -133,10 +135,13 @@ const CompanyProfile = () => {
 
     return (
         <div className="max-w-5xl mx-auto p-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <Link to="/companies" className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-white mb-6 transition-colors">
+            <button
+                onClick={() => navigate(-1)}
+                className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-white mb-6 transition-colors"
+            >
                 <ArrowLeft size={16} />
                 Back to Companies
-            </Link>
+            </button>
 
             {/* Header Card */}
             <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8 mb-8 backdrop-blur-sm">

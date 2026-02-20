@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../services/api";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 import { Loader2, Filter, MapPin, TrendingUp, LayoutGrid, List as ListIcon, Save } from "lucide-react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
@@ -9,40 +9,44 @@ import { getStageColor } from "../utils/styles";
 export default function Companies() {
     const navigate = useNavigate();
     const location = useLocation();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const [companies, setCompanies] = useState([]);
-    const [page, setPage] = useState(1);
+
+    // Initialize state from URL params
+    const [page, setPage] = useState(parseInt(searchParams.get("page")) || 1);
     const [totalPages, setTotalPages] = useState(1);
     const [loading, setLoading] = useState(false);
     const [longLoading, setLongLoading] = useState(false);
 
     // Filters
-    const [industry, setIndustry] = useState("All");
-    const [stage, setStage] = useState("All");
-    const [sort, setSort] = useState('name'); // NEW
-    const [order, setOrder] = useState('asc'); // NEW
+    const [industry, setIndustry] = useState(searchParams.get("industry") || "All");
+    const [stage, setStage] = useState(searchParams.get("stage") || "All");
+    const [sort, setSort] = useState(searchParams.get("sort") || 'name');
+    const [order, setOrder] = useState(searchParams.get("order") || 'asc');
     const [viewMode, setViewMode] = useState("grid"); // 'grid' or 'list'
 
     const industries = ['All', 'AI', 'DevTools', 'Fintech', 'Productivity', 'Design', 'Data'];
     const stages = ['All', 'Seed', 'Series A', 'Series B', 'Late Stage', 'Bootstrapped'];
 
-    // Restore from state if available
-    useEffect(() => {
-        if (location.state) {
-            if (location.state.industry) setIndustry(location.state.industry);
-            if (location.state.stage) setStage(location.state.stage);
-        }
-    }, [location.state]);
+    const searchQuery = searchParams.get('q') || '';
 
-    // ... (rest of query params)
-    const query = new URLSearchParams(location.search);
-    const searchQuery = query.get('q') || '';
+    const updateSearchParams = (updates) => {
+        const newParams = new URLSearchParams(searchParams);
+        Object.entries(updates).forEach(([key, value]) => {
+            if (value && value !== 'All') {
+                newParams.set(key, value);
+            } else {
+                newParams.delete(key);
+            }
+        });
+        setSearchParams(newParams);
+    };
 
     const fetchCompanies = async () => {
         setLoading(true);
         setLongLoading(false);
 
-        // Set a timeout to show "long loading" message after 5 seconds
         const timer = setTimeout(() => {
             setLongLoading(true);
         }, 5000);
@@ -50,12 +54,12 @@ export default function Companies() {
         try {
             const params = {
                 page,
-                limit: 9, // Changed from 12 to 9
-                search: searchQuery, // Added search query
+                limit: 9,
+                search: searchQuery,
                 industry,
                 stage,
-                sort, // Added sort
-                order // Added order
+                sort,
+                order
             };
             if (industry !== 'All') params.industry = industry;
             if (stage !== 'All') params.stage = stage;
@@ -85,16 +89,23 @@ export default function Companies() {
         alert("Search saved to your library!");
     };
 
-    // Debounce filters
+    // Update URL when filters or sorting change
     useEffect(() => {
         setPage(1);
-        fetchCompanies();
-    }, [industry, stage, searchQuery, sort, order]); // Added searchQuery, sort, order
+        updateSearchParams({
+            industry,
+            stage,
+            sort,
+            order,
+            page: 1
+        });
+    }, [industry, stage, searchQuery, sort, order]);
 
-    // Pagination change
+    // Update URL when page changes
     useEffect(() => {
+        updateSearchParams({ page });
         fetchCompanies();
-    }, [page]);
+    }, [page, industry, stage, searchQuery, sort, order]);
 
     return (
         <div className="p-8 max-w-7xl mx-auto">
