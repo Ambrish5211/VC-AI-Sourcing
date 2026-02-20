@@ -182,8 +182,22 @@ export default function Companies() {
 
             {/* Content Area */}
             {loading ? (
-                <div className="flex items-center justify-center py-20">
-                    <Loader2 className="animate-spin text-blue-500" size={40} />
+                <div className="flex flex-col items-center justify-center py-20 text-zinc-500">
+                    <Loader2 className="animate-spin text-blue-500 mb-4" size={40} />
+                    <p>Loading market data...</p>
+                    {longLoading && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mt-6 p-4 bg-zinc-900 border border-zinc-800 rounded-lg max-w-sm text-center"
+                        >
+                            <p className="text-yellow-500 font-medium mb-1">Server Waking Up 😴</p>
+                            <p className="text-xs text-zinc-400">
+                                The backend runs on a free instance and sleeps when inactive.
+                                Please wait 30-50 seconds for it to restart.
+                            </p>
+                        </motion.div>
+                    )}
                 </div>
             ) : companies.length === 0 ? (
                 <div className="bg-zinc-900/30 border border-dashed border-zinc-800 rounded-2xl p-12 text-center">
