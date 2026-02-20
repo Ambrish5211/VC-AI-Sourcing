@@ -78,14 +78,14 @@
     },
     {
         "id": "8",
-        "name": "Midjourney",
-        "domain": "midjourney.com",
+        "name": "Sarvam AI",
+        "domain": "sarvam.ai",
         "industry": "AI",
-        "stage": "Bootstrapped",
-        "location": "San Francisco, CA",
-        "description": "An independent research lab exploring new mediums of thought.",
-        "foundedYear": 2022,
-        "logo": "https://www.google.com/s2/favicons?domain=midjourney.com&sz=128"
+        "stage": "Series A",
+        "location": "Bengaluru, India",
+        "description": "Indian AI company developing LLMs and multimodal systems with a focus on Indian languages.",
+        "foundedYear": 2023,
+        "logo": "https://www.google.com/s2/favicons?domain=sarvam.ai&sz=128"
     },
     {
         "id": "9",
@@ -144,14 +144,14 @@
     },
     {
         "id": "14",
-        "name": "Perplexity",
-        "domain": "perplexity.ai",
-        "industry": "AI Search",
-        "stage": "Series B",
-        "location": "San Francisco, CA",
-        "description": "The world's first conversational answer engine.",
-        "foundedYear": 2022,
-        "logo": "https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128"
+        "name": "Yellow.ai",
+        "domain": "yellow.ai",
+        "industry": "Conversational AI",
+        "stage": "Series C",
+        "location": "Bengaluru, India",
+        "description": "Leading enterprise conversational AI platform that automates customer and employee interactions.",
+        "foundedYear": 2016,
+        "logo": "https://www.google.com/s2/favicons?domain=yellow.ai&sz=128"
     },
     {
         "id": "15",
