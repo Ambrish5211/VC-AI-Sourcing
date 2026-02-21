@@ -47,6 +47,12 @@ const GlobalSearch = () => {
     return () => clearTimeout(timer);
   }, [query]);
 
+  const handleSelect = (id) => {
+    navigate(`/companies/${id}`);
+    setShowDropdown(false);
+    setQuery("");
+  };
+
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       if (results.length > 0) {
