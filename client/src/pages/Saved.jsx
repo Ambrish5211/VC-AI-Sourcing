@@ -19,12 +19,11 @@ const Saved = () => {
     };
 
     const applySearch = (search) => {
-        navigate('/companies', {
-            state: {
-                industry: search.industry,
-                stage: search.stage
-            }
-        });
+        const params = new URLSearchParams();
+        if (search.industry && search.industry !== 'All') params.set('industry', search.industry);
+        if (search.stage && search.stage !== 'All') params.set('stage', search.stage);
+
+        navigate(`/companies?${params.toString()}`);
     };
 
     return (
